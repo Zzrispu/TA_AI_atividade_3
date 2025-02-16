@@ -1,15 +1,19 @@
 import streamlit as st
 import pandas as pd
 import psycopg2
+import os
 import plotly.express as px
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Configuração do banco de dados
 DB_CONFIG = {
     'dbname': 'ml_models_comparations',
-    'user': 'postgres',
-    'password': 'zzrispudb',
+    'user': os.getenv("DB_USER"),
+    'password': os.getenv("DB_PASSWORD"),
     'host': 'localhost',
-    'port': '5432'
+    'port': os.getenv("DB_PORT")
 }
 
 # Função para buscar dados do banco
